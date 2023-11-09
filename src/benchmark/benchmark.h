@@ -108,23 +108,24 @@ public:
         // Read keys from file
         COUT_THIS("Reading data from file.");
 
+        // may casue memory leak?
         if (table_size > 0) keys = new KEY_TYPE[table_size];
 
 
         if (keys_file_type == "binary") {
             table_size = load_binary_data(keys, table_size, keys_file_path);
             if (table_size <= 0) {
-                COUT_THIS("Could not open key file, please check the path of key file.");
+                COUT_THIS("Could not open key file, please check the path of key file. in binary");
                 exit(0);
             }
         } else if (keys_file_type == "text") {
             table_size = load_text_data(keys, table_size, keys_file_path);
             if (table_size <= 0) {
-                COUT_THIS("Could not open key file, please check the path of key file.");
+                COUT_THIS("Could not open key file, please check the path of key file. in text");
                 exit(0);
             }
         } else {
-            COUT_THIS("Could not open key file, please check the path of key file.");
+            COUT_THIS("Could not open key file, please check the path of key file. in else");
             exit(0);
         }
 
