@@ -335,14 +335,14 @@ public:
 
                 if (op == READ) {  // get
                     auto ret = index->get(key, val, &paramI);
-                    // if(!ret) {
-                    //     printf("read not found, Key %lu\n",key);
-                    //     continue;
-                    // }
-                    // if(val != 123456789) {
-                    //     printf("read failed, Key %lu, val %llu\n",key, val);
-                    //     exit(1);
-                    // }
+                    if(!ret) {
+                        printf("read not found, Key %lu\n",key);
+                        continue;
+                    }
+                    if(val != 123456789) {
+                        printf("read failed, Key %lu, val %llu\n",key, val);
+                        exit(1);
+                    }
                     thread_param.success_read += ret;
                 } else if (op == INSERT) {  // insert
                     auto ret = index->put(key, 123456789, &paramI);
